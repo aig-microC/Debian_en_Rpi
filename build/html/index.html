@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalación de DEBIAN nativo en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - 2.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Procedimiento para instalar Debian «nativo» en una Raspberry Pi" href="DebianNativoRPi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Debian nativo en una RPi
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DebianNativoRPi.html">Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Debian nativo en una RPi</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instalación de <em>DEBIAN</em> nativo en una <em>Raspberry Pi</em></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instalacion-de-debian-nativo-en-una-raspberry-pi">
+<h1>Instalación de <em>DEBIAN</em> nativo en una <em>Raspberry Pi</em><a class="headerlink" href="#instalacion-de-debian-nativo-en-una-raspberry-pi" title="Enlace permanente a este encabezado"></a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado"></a></h2>
+<p>En este documento se describe como instalar el <em>Sistema Operativo Debian</em> en una <a class="reference external" href="https://www.raspberrypi.com/">Raspberry Pi</a>. Esta tarjeta, que es un ordenador completo, tiene su propio sistema operativo oficial: <em>Raspberry Pi OS (de 32 o 64-bits)</em> que se puede obtener de <a class="reference external" href="https://www.raspberrypi.com/software/operating-systems/">https://www.raspberrypi.com/software/operating-systems/</a> y que es un derivado de <em>Debian</em> <em>estable</em>, optimizado para esta tarjeta. Yo prefiero trabajar con un sistema <em>Debian</em> nativo y en su versión <em>testing</em>, si ya la versión estable tiene más de 3 o 6 meses de antigüedad.</p>
+<p>A continuación te muestro el procedimiento para realizar una instalación de <em>Debian</em> en una tarjeta <em>microSD</em> ya sea para la versión <em>estable</em> o la <em>testing</em>.</p>
+<p>Básicamente, la selección de la imagen de partida (ver <a class="reference external" href="https://wiki.debian.org/RaspberryPi">https://wiki.debian.org/RaspberryPi</a> y la respuesta 6 de <a class="reference external" href="https://raspi.debian.net/faq/">https://raspi.debian.net/faq/</a>) depende de la <em>familia</em> a la que pertenece la tarjeta de la <em>Raspberry Pi</em>.</p>
+<ul class="simple">
+<li><p>Las <em>Raspberry Pi Zero</em>, <em>Raspberry Pi Zero W</em> o <em>Raspberry Pi Zero WH</em> utilizan un chip que se corresponde con una arquitectura de 32 bits de tipo <em>armel</em> lo que supone que no dispone de una unidad de coma (punto en inglés) flotante (<em>FPU</em> <em>Floating Point Unit</em>) para las operaciones de cálculo. Los cálculos los hace mediante software y por lo tanto es más lento que si dispusiera de una <em>FPU</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 0/1</strong>. No consideraré la <em>Raspberry Pi Zero</em> porque no tiene conectividad con la que acceder a <em>Internet</em> mientras que las que si la tienen, <em>W</em> y <em>WH</em>, solo se diferencian en si tiene (<em>WH</em>) o no (<em>W</em>) la tira de de pines para conexiones (<em>GPIO</em>) soldada. A esta familia pertenecen también las <em>Raspberry Pi A, B, A+, B+ y las mencionadas Zero, Zero W</em>)</p></li>
+<li><p>La <em>Raspberry Pi 2</em> tiene arquitectura <em>amrhf</em> de 32 bits con 1 GB de memoria <em>RAM</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 2</strong></p></li>
+<li><p>La <em>Raspberry Pi Zero 2W</em> es de 64 bits con <em>FPU</em>. Su arquitectura es <em>armhf</em>. Tiene, como la <em>Zero W</em> 512 MB de memoria <em>RAM</em> por lo que si instalas un escritorio (sí, se puede instalar un escritorio y tener un entorno gráfico) no será muy rápido (pero un poco más rápida que si lo pruebas en una <em>Zero W</em>). En la notación que utiliza <em>Debian</em> es de la <strong>familia 3</strong>. A esta familia pertenecen también las <em>Raspberry Pi 3, 3A+, 3B+ y la mencionada Zero 2 W</em>).</p></li>
+<li><p>Las <em>Raspberry Pi 4</em> y <em>Raspberry Pi 400</em> son las versiones más potentes, con arquitectura <em>arm64</em> de 64 bits y 4 GB de memoria. La <em>Raspberry Pi 4</em> dispone de una versión con 8 GB de memoria <em>RAM</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 4</strong>.</p></li>
+</ul>
+<p>Este documento está bajo  <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>. Todas las marcas comerciales referidas en este documento pertenecen a sus legítimos propietarios.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/CC.png"><img alt="_images/CC.png" src="_images/CC.png" style="width: 182.0px; height: 60.75px;" /></a>
+</figure>
+<p>La última versión de este documento está en <a class="reference external" href="https://github.com/aig-microC/Debian-en-RaspberryPi">https://github.com/aig-microC/Debian-en-RaspberryPi</a>.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DebianNativoRPi.html">Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#conexion-a-internet">Conexión a Internet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#conexion-a-la-tarjeta-raspberry-pi-sin-monitor">Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#configuracion-del-sistema-operativo">Configuración del sistema operativo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="DebianNativoRPi.html" class="btn btn-neutral float-right" title="Procedimiento para instalar Debian «nativo» en una Raspberry Pi" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Angel de la Iglesia.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

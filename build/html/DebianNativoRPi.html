@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procedimiento para instalar Debian «nativo» en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - 2.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Instalación de DEBIAN nativo en una Raspberry Pi" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Debian nativo en una RPi
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conexion-a-internet">Conexión a Internet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conexion-a-la-tarjeta-raspberry-pi-sin-monitor">Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-sistema-operativo">Configuración del sistema operativo</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Debian nativo en una RPi</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/DebianNativoRPi.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="procedimiento-para-instalar-debian-nativo-en-una-raspberry-pi">
+<h1>Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em><a class="headerlink" href="#procedimiento-para-instalar-debian-nativo-en-una-raspberry-pi" title="Enlace permanente a este encabezado"></a></h1>
+<p>Lo primero que hay que hacer es descargar la imagen básica desde el enlace <a class="reference external" href="https://raspi.debian.net/">https://raspi.debian.net/</a>. Hay dos posibilidades: descargar la imagen creada diariamente (<a class="reference external" href="https://raspi.debian.net/daily-images/">https://raspi.debian.net/daily-images/</a>) o de la versión probadas(<a class="reference external" href="https://raspi.debian.net/tested-images/">https://raspi.debian.net/tested-images/</a>). Yo suelo utilizar las imágenes creadas diariamente y si encuentro problemas en la instalación me descargo la imagen testeada.</p>
+<p>Una vez descargada hay que escribirla en una tarjeta <em>microSD</em>. Para ello utilizaremos, si tenemos instalado el <em>Raspberry Pi OS</em> en una <em>RPi 4 o 400</em> el programa <a class="reference external" href="https://www.raspberrypi.com/software/">rpi-imager</a> que que está disponible en este sistema operativo o si estamos en un sistema <em>Debian</em> se puede compilar e instalar siguiendo las instrucciones que se pueden ver en <a class="reference external" href="https://github.com/raspberrypi/rpi-imager">https://github.com/raspberrypi/rpi-imager</a>.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/rpi-imager.png"><img alt="_images/rpi-imager.png" src="_images/rpi-imager.png" style="width: 542.4px; height: 351.20000000000005px;" /></a>
+<figcaption>
+<p><span class="caption-text">rpi-imager. Programa para copiar una imagen del SO</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>Seleccionamos <em>CHOSE OS</em> y vamos al final para seleccionar «<strong>Use custom</strong>, <em>Select a custom .img from your computer</em>» y buscamos la imagen que acabamos de descargar. A continuación seleccionamos «<em>CHOSE STORAGE</em>» y seleccionamos la memoria <em>microSD</em>. Y por último pulsamos «<em>WRITE</em>» para escribir la imagen en la tarjeta y terminar.</p>
+<p>También lo podemos hacer utilizando la línea de comandos, con el procedimiento que se describe en <a class="reference external" href="https://raspi.debian.net/how-to-image/">https://raspi.debian.net/how-to-image/</a> y que básicamente consiste en, situándonos en el subdirectorio donde hayamos descargado la imagen, teclear:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>xzcat<span class="w"> </span>fichero_imagen_descargado.img.xz<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/<span class="o">{</span>indicador<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>tarjeta<span class="w"> </span>SD<span class="o">}</span><span class="w"> </span><span class="nv">bs</span><span class="o">=</span>64k<span class="w"> </span><span class="nv">oflag</span><span class="o">=</span>dsync<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>¡Asegúrate de tener el indicador correcto para la tarjeta SD! (¡corres el riesgo de perder el disco de tu sistema si no identificas bien la tarjeta del nuevo sistema operativo!)</p>
+</div>
+<p>Una manera fácil de ver cual es el dispositivo al que está conectada nuestra tarjeta <em>microSD</em> es el siguiente:</p>
+<ol class="loweralpha simple">
+<li><p>Con la tarjeta <em>microSD</em> desconectada del ordenador teclear el comando <cite>lsblk</cite> y observar que elementos hay en nuestro sistema debajo de <em>/dev/</em>. Por ejemplo en mi sistema obtengo lo siguiente:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span>angel@debianHP:~$<span class="w"> </span>lsblk
+<span class="linenos"> 2</span><span class="w"> </span>NAME<span class="w">        </span>MAJ:MIN<span class="w"> </span>RM<span class="w">   </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
+<span class="linenos"> 3</span><span class="w"> </span>sda<span class="w">           </span><span class="m">8</span>:0<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">1</span>,8T<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<span class="linenos"> 4</span><span class="w"> </span>├─sda1<span class="w">        </span><span class="m">8</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">1</span>,8T<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/
+<span class="linenos"> 5</span><span class="w"> </span>├─sda2<span class="w">        </span><span class="m">8</span>:2<span class="w">    </span><span class="m">0</span><span class="w">     </span>1K<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos"> 6</span><span class="w"> </span>└─sda5<span class="w">        </span><span class="m">8</span>:5<span class="w">    </span><span class="m">0</span><span class="w">   </span>975M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span><span class="o">[</span>SWAP<span class="o">]</span>
+<span class="linenos"> 7</span><span class="w"> </span>nvme0n1<span class="w">     </span><span class="m">259</span>:0<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">238</span>,5G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<span class="linenos"> 8</span><span class="w"> </span>├─nvme0n1p1<span class="w"> </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>260M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos"> 9</span><span class="w"> </span>├─nvme0n1p2<span class="w"> </span><span class="m">259</span>:2<span class="w">    </span><span class="m">0</span><span class="w">    </span>16M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">10</span><span class="w"> </span>├─nvme0n1p3<span class="w"> </span><span class="m">259</span>:3<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">237</span>,2G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">11</span><span class="w"> </span>└─nvme0n1p4<span class="w"> </span><span class="m">259</span>:4<span class="w">    </span><span class="m">0</span><span class="w">   </span>980M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">12</span><span class="w"> </span>angel@debianHP:~$
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li><p>Y, a continuación, conectamos nuestra tarjeta <em>microSD</em>, repetimos el comando y vemos la diferencia,</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span>angel@debianHP:~$<span class="w"> </span>lsblk
+<span class="linenos"> 2</span><span class="w"> </span>NAME<span class="w">        </span>MAJ:MIN<span class="w"> </span>RM<span class="w">   </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
+<span class="linenos"> 3</span><span class="w"> </span>sda<span class="w">           </span><span class="m">8</span>:0<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">1</span>,8T<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<span class="linenos"> 4</span><span class="w"> </span>├─sda1<span class="w">        </span><span class="m">8</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span><span class="m">1</span>,8T<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/
+<span class="linenos"> 5</span><span class="w"> </span>├─sda2<span class="w">        </span><span class="m">8</span>:2<span class="w">    </span><span class="m">0</span><span class="w">     </span>1K<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos"> 6</span><span class="w"> </span>└─sda5<span class="w">        </span><span class="m">8</span>:5<span class="w">    </span><span class="m">0</span><span class="w">   </span>975M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span><span class="o">[</span>SWAP<span class="o">]</span>
+<span class="linenos"> 7</span><span class="w"> </span>mmcblk0<span class="w">     </span><span class="m">179</span>:0<span class="w">    </span><span class="m">0</span><span class="w">  </span><span class="m">29</span>,7G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<span class="linenos"> 8</span><span class="w"> </span>└─mmcblk0p1<span class="w"> </span><span class="m">179</span>:1<span class="w">    </span><span class="m">0</span><span class="w">  </span><span class="m">29</span>,7G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/media/angel/ext4-MICROSD
+<span class="linenos"> 9</span><span class="w"> </span>nvme0n1<span class="w">     </span><span class="m">259</span>:0<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">238</span>,5G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<span class="linenos">10</span><span class="w"> </span>├─nvme0n1p1<span class="w"> </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>260M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">11</span><span class="w"> </span>├─nvme0n1p2<span class="w"> </span><span class="m">259</span>:2<span class="w">    </span><span class="m">0</span><span class="w">    </span>16M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">12</span><span class="w"> </span>├─nvme0n1p3<span class="w"> </span><span class="m">259</span>:3<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">237</span>,2G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">13</span><span class="w"> </span>└─nvme0n1p4<span class="w"> </span><span class="m">259</span>:4<span class="w">    </span><span class="m">0</span><span class="w">   </span>980M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+<span class="linenos">14</span><span class="w"> </span>angel@debianHP:~$
+</pre></div>
+</div>
+<p>Vemos que el dispositivo que hay que utilizar es <cite>/dev/mmcblk0</cite>. Podéis ver que yo tenía formateada la tarjeta <em>microSD</em> como ext4, como indica la etiqueta con la que la creé.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Puede ser conveniente que, si la tarjeta <em>microSD</em> no es nueva, la formatees previamente. Lo puedes hacer con un interfaz gráfico con un programa como <em>GParted</em>, o desde la linea de comandos tal como se muestra a continuación. Si tienes instalados los paquetes <em>parted</em> <em>dosfstools</em> y <em>mtools</em> puedes ignorar las dos primeras líneas.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos">2</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>parted<span class="w"> </span>dosfstools<span class="w"> </span>mtools
+<span class="linenos">3</span>$<span class="w"> </span>sudo<span class="w"> </span>umount<span class="w"> </span>/media/angel/ext4-MICROSD
+<span class="linenos">4</span>$<span class="w"> </span>sudo<span class="w"> </span>parted<span class="w"> </span>/dev/mmcblk0<span class="w"> </span>--script<span class="w"> </span>--<span class="w"> </span>mklabel<span class="w"> </span>msdos
+<span class="linenos">5</span>$<span class="w"> </span>sudo<span class="w"> </span>parted<span class="w"> </span>/dev/mmcblk0<span class="w"> </span>--script<span class="w"> </span>--<span class="w"> </span>mkpart<span class="w"> </span>primary<span class="w"> </span>fat32<span class="w"> </span>1MiB<span class="w"> </span><span class="m">100</span>%
+<span class="linenos">6</span>$<span class="w"> </span>sudo<span class="w"> </span>mkfs.vfat<span class="w"> </span>-F32<span class="w"> </span>/dev/mmcblk0
+<span class="linenos">7</span>$<span class="w"> </span>sudo<span class="w"> </span>mlabel<span class="w"> </span>-i<span class="w"> </span>/dev/mmcblk0<span class="w"> </span>::mietiqueta
+</pre></div>
+</div>
+<section id="conexion-a-internet">
+<h2>Conexión a Internet<a class="headerlink" href="#conexion-a-internet" title="Enlace permanente a este encabezado"></a></h2>
+<p>Si tu tarjeta tiene conector RJ45 para conectar una línea ethernet puedes conectarte al router con el cable. La conexión a internet será sencilla y no hay que hacer nada. Si no hay conector RJ45 o solo puedes conectar por <em>wifi</em> es necesario hacer dos cosas más en la <em>microSD</em> antes de ponerla en el zócalo de la tarjeta <em>Raspberry Pi</em>.</p>
+<p>La tarjeta que acabamos de crear tiene dos particiones: <em>RASPIFIRM</em> donde están todos los ficheros para el arranque del Sistema Operativo y <em>RASPIROOT</em> que contiene la estructura de ficheros de nuestro Sistema <em>Debian</em>.</p>
+<p>Para tener conexión a <em>Internet</em> debemos editar el fichero <em>/etc/network/interfaces.d/wlan0</em> que está en la partición <em>RASPIROOT</em> de la tarjeta que acabamos de crear. Este fichero está en la partición <em>EXT3</em> de la <em>microSD</em> y seguramente no te dejará editarla con tu usuario normal. Para poder editarlo deberás hacerlo como usuario <em>root</em> o mejor mediante sudo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>pluma<span class="w"> </span>/media/angel/RASPIROOT/etc/network/interfaces.d/wlan0
+</pre></div>
+</div>
+<p>En lugar del editor <em>pluma</em> puedes utilizar el que más re guste: <em>vi</em>, <em>emacs</em> <em>featherpad</em>, <em>gedit</em>, etc.</p>
+<p>El contenido del fichero deberá ser como el siguiente</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># To enable wireless networking, uncomment the following lines and -naturally-</span>
+<span class="linenos">2</span><span class="c1"># replace with your network&#39;s details.</span>
+<span class="linenos">3</span><span class="c1">#</span>
+<span class="linenos">4</span>allow-hotplug<span class="w"> </span>wlan0
+<span class="linenos">5</span>iface<span class="w"> </span>wlan0<span class="w"> </span>inet<span class="w"> </span>dhcp
+<span class="linenos">6</span><span class="c1">#iface wlan0 inet6 dhcp</span>
+<span class="linenos">7</span><span class="w">  </span>wpa-ssid<span class="w"> </span><span class="s2">&quot;tu_identificador_de_red&quot;</span>
+<span class="linenos">8</span><span class="w">  </span>wpa-psk<span class="w"> </span><span class="s2">&quot;tu_contraseña&quot;</span>
+</pre></div>
+</div>
+<p>En la línea 5 o 6 deberás descomentar la correspondiente a tu router: descomenta la línea 5 si tienes direccionamiento <em>IPv4</em> (del estilo 192.168.1.23) o descomenta la línea 6 si tienes direccionamiento <em>IPv6</em> (del estilo 2001:0db8:85a3:0000:0000:8a2e:0370:7334).</p>
+<p>En las líneas 7 y 8 deberás escribir los datos de tu red.</p>
+</section>
+<section id="conexion-a-la-tarjeta-raspberry-pi-sin-monitor">
+<h2>Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor<a class="headerlink" href="#conexion-a-la-tarjeta-raspberry-pi-sin-monitor" title="Enlace permanente a este encabezado"></a></h2>
+<p>Si no dispones de monitor para conectar a tu tarjeta <em>Raspberry Pi</em> puedes conectarte desde tu ordenador (el que has utilizado para grabar la imagen) mediante <em>ssh</em>.</p>
+<p>Para ello debes modificar, antes del primer arramque de la <em>RPi</em> el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> que está en la partición <em>RASPIFIRM</em> que está formateada com <em>msdos</em> y la podrás editar sin utilizar <em>sudo</em> con el caso del fichero <em>wlan0</em>.</p>
+<p>Previamente has de generar la clave de autorización para poder acceder mediante <em>ssh</em>. Para ello hay que generar unos ficheros (<em>id_rsaP</em> y <em>id_rsa.pub</em>) que se crean en tu subdirectorio raiz bajo <em>/home/usuario/.ssh</em> mediante el comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa
+</pre></div>
+</div>
+<p>Cuando lo ejecutes te pedirá una <em>passphrase</em> que es una contraseña (nos recomienda que sea una frase larga) que deberás recordar para poder utilizar el <em>ssh</em>. Si lo dejas en blanco no te pédirá esta contraseña pero el sistema estará más desprotegido.</p>
+<p>Una vez ejecutado este comando debemos copiar el contenido del fichero <em>id_rsa.pub</em>,en el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> descomentando la línea 27 «<em>root_autorized_key=</em>» y pegando el contenido a partir del signo <em>=</em> y sin dejar ningún espacio en blanco entre el <em>=</em> y lo pegado. El resultado deberá quedar de forma similara a:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">23</span><span class="c1"># root_pw - Set a password for the root user (by default, it allows</span>
+<span class="linenos">24</span><span class="c1"># for a passwordless login)</span>
+<span class="linenos">25</span><span class="c1">#root_pw=FooBar</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="c1"># root_authorized_key - Set an authorized key for a root ssh login</span>
+<span class="linenos">28</span><span class="nv">root_authorized_key</span><span class="o">=</span>ssh-rsa<span class="w"> </span>AAAAB3NzaC1yc2EBAAADAQABAAABgQCyuJLQDeYhvitA4rCS9xRgBEf2L+sCsadGScC2H2VJN0//G3K0W57IX58t2ptaJunfEakxxZ+fperXLFIDBQaeDLQyQXwI8CA/Dj4DRjQMh9MuRRWMBrTMYz0rdIc0bnlHVh5q9SgJJReyfs4sibEV4wZUq3GIe+8lqGlpbGqevDdU/TY6swHBs8Ff+N187xHCvd6NJCBYYDWddnUSj4WPdsOdUgiGMpmXII5M9zGqztycAuwpeMeW13L2GBCEI8q6pqUWUUwiOMNsPN/BVFqsnrnXxBFVMS7CSGkFCeUwvQDz9LY2gHbs9x9lJWLT0D9dg2YkCuGDBe/H0k7EdsH3FXsO79YdUfnA91yWe81oGlBwIYqo2+bAx91sbc/DJhML9G0UsxsHGC/88BFeaQ8jmwoi21x0ZBNOkfAQaR5u1cSZYE5340cy5/FZvF5PWiV7XZQuVS6VeJg2H9n3il/APAuB34XjIyvr/hzJrASr4YtNkAtKi2FlIxntUkAYbmk<span class="o">=</span><span class="w"> </span>usuario@debian
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1"># hostname - Set the system hostname.</span>
+<span class="linenos">31</span><span class="c1">#hostname=rpi</span>
+</pre></div>
+</div>
+<p>Además debemos conocer las direcciones <em>IP</em> de nuestra red. Para ello es necesario tener instalado el programa <em>nmap</em>. Si no lo tienes instalado lo puedes instalar con:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nmap
+</pre></div>
+</div>
+<p>Alimentamos la tarjeta <em>Raspberry Pi</em> con la <em>microSD</em> en su zócalo y esperamos unos minutos para proseguir. La <em>Raspberry Pi</em> puede tardar unos minutos en arrancar completamente.</p>
+<p>Para poder conectarnos con la tarjeta <em>Raspberry Pi</em> utilizamos el comando <em>hostname -I</em> para saber cual es la dirección <em>IP</em> de nuestro <em>PC</em> y una vez identificado utilizamos <em>nmap</em> con la dirección de nuestro <em>PC</em> pero en el rango <em>1-255</em> para descubrir la dirección de nuestra <em>Raspberry Pi</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>$<span class="w"> </span>hostname<span class="w"> </span>-I
+<span class="linenos"> 2</span><span class="m">192</span>.168.1.105
+<span class="linenos"> 3</span>$<span class="w"> </span>nmap<span class="w"> </span>-sP<span class="w"> </span><span class="m">192</span>.168.1.1-255
+<span class="linenos"> 4</span>Starting<span class="w"> </span>Nmap<span class="w"> </span><span class="m">7</span>.93<span class="w"> </span><span class="o">(</span><span class="w"> </span>https://nmap.org<span class="w"> </span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-09-13<span class="w"> </span><span class="m">17</span>:17<span class="w"> </span>CEST
+<span class="linenos"> 5</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>mi_rouiter<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.1<span class="o">)</span>
+<span class="linenos"> 6</span>Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0014s<span class="w"> </span>latency<span class="o">)</span>.
+<span class="linenos"> 7</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>rpi1-20230908.home<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.106<span class="o">)</span>
+<span class="linenos"> 8</span>Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.048s<span class="w"> </span>latency<span class="o">)</span>.
+<span class="linenos"> 9</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>debHP5T.home<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.105<span class="o">)</span>
+<span class="linenos">10</span>Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.00073s<span class="w"> </span>latency<span class="o">)</span>.
+<span class="linenos">11</span>Nmap<span class="w"> </span><span class="k">done</span>:<span class="w"> </span><span class="m">255</span><span class="w"> </span>IP<span class="w"> </span>addresses<span class="w"> </span><span class="o">(</span><span class="m">3</span><span class="w"> </span>hosts<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">5</span>.37<span class="w"> </span>seconds
+</pre></div>
+</div>
+<p>En este ejemplo la <em>Raspberry Pi</em> está en la dirección <em>192.168.1.106</em>.</p>
+<p>Para conectar con la <em>Raspberry Pi</em> tecleamos lo siguiente (en este paso nos pedirá la <em>passphrase</em> si es que la creamos anteriormente):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>&gt;&gt;DebianNativoRPi$<span class="w"> </span>ssh<span class="w"> </span>root@192.168.1.106
+<span class="linenos"> 2</span>Linux<span class="w"> </span>rpi1-20230915<span class="w"> </span><span class="m">6</span>.1.0-11-rpi<span class="w"> </span><span class="c1">#1 Debian 6.1.38-4 (2023-08-08) armv6l</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>The<span class="w"> </span>programs<span class="w"> </span>included<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>Debian<span class="w"> </span>GNU/Linux<span class="w"> </span>system<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>software<span class="p">;</span>
+<span class="linenos"> 5</span>the<span class="w"> </span>exact<span class="w"> </span>distribution<span class="w"> </span>terms<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>program<span class="w"> </span>are<span class="w"> </span>described<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+<span class="linenos"> 6</span>individual<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>/usr/share/doc/*/copyright.
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>Debian<span class="w"> </span>GNU/Linux<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent
+<span class="linenos"> 9</span>permitted<span class="w"> </span>by<span class="w"> </span>applicable<span class="w"> </span>law.
+<span class="linenos">10</span>root@rpi1-20230915:~#
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Inicialmente el usuario root no tiene <em>password</em></p>
+</div>
+<p>Y ya puedes empezar a trabajar con un monitor remoto.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Lo que viene a continuación en este apartado es válido para cuando ya tengas instalado el sistema con un usuario creado. No es aplicable al estado actual de la instalación.</p>
+</div>
+<p>Si ya tuviéramos el usuario con password (cuando tengamos el <em>S.O.</em> instalado y operativo), la respuesta sería similar a:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>$<span class="w"> </span>ssh<span class="w"> </span>usuario@192.168.1.106
+<span class="linenos"> 2</span>The<span class="w"> </span>authenticity<span class="w"> </span>of<span class="w"> </span>host<span class="w"> </span><span class="s1">&#39;192.168.1.106 (192.168.1.106)&#39;</span><span class="w"> </span>can<span class="s1">&#39;t be established.</span>
+<span class="linenos"> 3</span><span class="s1">ED25519 key fingerprint is SHA256:iG2kEuxjKaxgRYdF7gj3den/J0NsNM7fPoe/ZkFbskM.</span>
+<span class="linenos"> 4</span><span class="s1">This key is not known by any other names.</span>
+<span class="linenos"> 5</span><span class="s1">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span>
+<span class="linenos"> 6</span><span class="s1">Warning: Permanently added &#39;</span><span class="m">192</span>.168.1.106<span class="s1">&#39; (ED25519) to the list of known hosts.</span>
+<span class="linenos"> 7</span><span class="s1">usuario@192.168.1.106&#39;</span>s<span class="w"> </span>password:
+<span class="linenos"> 8</span>Linux<span class="w"> </span>rpi1-20230908<span class="w"> </span><span class="m">6</span>.1.0-11-rpi<span class="w"> </span><span class="c1">#1 Debian 6.1.38-4 (2023-08-08) armv6l</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>The<span class="w"> </span>programs<span class="w"> </span>included<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>Debian<span class="w"> </span>GNU/Linux<span class="w"> </span>system<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>software<span class="p">;</span>
+<span class="linenos">11</span>the<span class="w"> </span>exact<span class="w"> </span>distribution<span class="w"> </span>terms<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>program<span class="w"> </span>are<span class="w"> </span>described<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+<span class="linenos">12</span>individual<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>/usr/share/doc/*/copyright.
+<span class="linenos">13</span>
+<span class="linenos">14</span>Debian<span class="w"> </span>GNU/Linux<span class="w"> </span>comes<span class="w"> </span>with<span class="w"> </span>ABSOLUTELY<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent
+<span class="linenos">15</span>permitted<span class="w"> </span>by<span class="w"> </span>applicable<span class="w"> </span>law.
+<span class="linenos">16</span>Last<span class="w"> </span>login:<span class="w"> </span>Thu<span class="w"> </span>Sep<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">09</span>:28:33<span class="w"> </span><span class="m">2023</span><span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.1.28
+</pre></div>
+</div>
+<p>Donde <em>usuario</em> será en nombre del usuario que hayas creado.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Cuando tengas instalado el sistema completo podrás conectarte mediante <em>ssh</em> con un ordenador (como estamos haciendo ahora) pero también lo puedes hacer con una tablet o un teléfono móvil.</p>
+</div>
+</section>
+<section id="configuracion-del-sistema-operativo">
+<h2>Configuración del sistema operativo<a class="headerlink" href="#configuracion-del-sistema-operativo" title="Enlace permanente a este encabezado"></a></h2>
+<p>Una vez grabado el <em>SO</em> en la <em>microSD</em> la insertamos en nuestra <em>RPi</em> y esperamos a que aparezca el <em>login</em> de entrada al sistema. Entramos con el usuario <em>root</em> y veremos que <strong>no</strong> nos pide contraseña. Los pasos para configurar nuestro sistema en español son los siguientes:</p>
+<ol class="arabic simple">
+<li><p>Actualización del sistema</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># apt update</span>
+<span class="linenos">2</span><span class="c1"># apt upgrade</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La primera vez que tecleas <em>apt update</em> el reloj del sistema no está sincronizado y produce un error de repositorio antiguo. La segunda vez es posible que ya se haya sincronizado y ya lo acepte sin error. Puedes hacer <em>ping google.es</em> y ver si tienes o no respuesta.</p>
+</div>
+<p>Si al hacer la actualización (<em>apt upgrade</em>) hace preguntas contesta la respuesta por defecto (<em>Intro</em>).</p>
+<ol class="arabic simple" start="2">
+<li><p>Añadir una <em>password</em> para el usuario <em>root</em>.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># passwd</span>
+<span class="linenos">2</span>New<span class="w"> </span>password:<span class="w"> </span><span class="s1">&#39;Tu_password_para_root&#39;</span>
+<span class="linenos">3</span>Retype<span class="w"> </span>new<span class="w"> </span>password:<span class="w"> </span><span class="s1">&#39;Tu_password_para_root&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Instalamos el programa <em>sudo</em> que permite a un usuario normal tener los privilegios de <em>root</em>.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># apt install sudo</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Creamos un usuario nuevo. Yo voy a crear, como ejemplo, el usuario <em>usuario</em>. Te pedirá el nombre del usuario y su contraseña. El resto de los campos que solicita son opcionales (yo los dejo en blanco pulsando <em>Intro</em>) y al final pedirá confirmación.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># adduser usuario</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En usuario pon el nombre que quieres para ti en el sistema.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Para que <em>usuario</em> pertenezca al grupo <em>sudo</em> hacemos lo siguiente:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># usermod -aG sudo usuario</span>
+</pre></div>
+</div>
+<p>Aquí tenemos un problema. Todavía no tenemos instalado el teclado y las <em>Locales</em> en español, por lo que el guión «-» no está en la tecla de nuestro teclado. Podemos ver en <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado">https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado</a> que el guión en el teclado de Estados Unidos está en la tercera tecla, por la derecha, de la fila de números y símbolos del teclado y que en el teclado español se corresponde con la tecla «'» (comilla simple) la que tiene el «?» cuando pulsamos la tecla <em>Shift</em> o <em>Mayúsculas</em>.</p>
+<ol class="arabic simple" start="6">
+<li><p>Ahora podemos reiniciar el sistema y entrar como usuario <em>root</em> o <em>usuario</em> con su contraseña correspondiente.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># reboot</span>
+</pre></div>
+</div>
+<p>Cuando arranque de nuevo entramos como usuario <em>usuario</em> y su contraseña</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>login:<span class="w"> </span>usuario
+<span class="linenos">2</span>Password:
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>A continuación instalamos las <em>locales</em>. Al utilizar <em>sudo</em> nos pedirá la password de <em>usuario</em> para proceder.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>locales
+<span class="linenos">2</span>$<span class="w"> </span>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>locales
+</pre></div>
+</div>
+<p>Y seleccionaremos,  con <em>la barra de espacio</em>, dos: <em>en_US.UTF8 UTF-8</em> y <em>es_ES.UTF8 UTF-8</em>. Pulsamos <em>&lt;tabular&gt;</em> y <em>ok</em> y cuando nos pregunte que <em>locale</em> queremos que sea nuestra local por defecto seleccionamos <em>es_ES.UTF-8</em>. Con esto el teclado todavía no está configurado en español.</p>
+<ol class="arabic simple" start="8">
+<li><p>Configuración del teclado en español. Para ello hacemos lo siguiente:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>keyboard-configuration
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Todavía no tenemos configurado el teclado en español por lo que deberemos usar nuevamente la tecla «'».</p>
+</div>
+<p>En la primera pantalla seleccionamos <em>Other</em>, pulsamos <em>&lt;tabular&gt;</em>, <em>ok</em> e <em>Intro</em>. De la lista que aparece seleccionamos <em>Spanish</em> y <em>ok</em> y, luego, <em>Spanish - Spanish (Windows)</em> y <em>ok</em>.</p>
+<ol class="arabic simple" start="9">
+<li><p>Ahora volvemos a reiniciar el sistema y entrar como usuario <em>usuario</em> con su contraseña correspondiente.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>A continuación instalamos los paquetes necesarios para la consola:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gpm<span class="w"> </span>console-common<span class="w"> </span>console-data<span class="w"> </span>console-setup
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El paquete <em>gpm</em> es para poder usar el ratón en la consola.</p>
+</div>
+<p>Veremos que ahora la <em>Configuración de console-data</em> ya nos aparece en español, aunque el teclado todavía no funciona en español.</p>
+<p>Seleccionamos la opción <em>Elegir el mapa de teclado de la lista completa</em> y seleccionamos <em>&lt;Aceptar&gt;</em> y seleccionamos <em>pc / qwerty Spanish / Standard / Standard</em> y  <em>&lt;Aceptar&gt;</em> ya tendremos el teclado en español. Verás, además, que si mueves el ratón el cursor se moverá por la pantalla.</p>
+<ol class="arabic simple" start="11">
+<li><p>Este paso es opcional. En la consola el tipo de caracteres (<em>fuentes</em>) que se han instalado es <em>Fixed</em> que tiene una mejor cobertura para los <em>scripts</em> internacionales. A mí, particularmente me gusta más los tipos <em>VGA</em>. En cualquier caso si deseas configurar los tipos de caracteres de la consola puedes hacer:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>console-settup
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Ahora ya sí, el guión «-» está en la tecla de nuestro teclado.</p>
+</div>
+<p>Seleccionar <em>UTF-8</em> y luego <em>#Latino1 y Latino5 - Europa Occidental y lenguas turcas</em> y ahora el tipo que desees. Yo elijo <em>VGA</em> como he comentado anteriormente y un tamaño de <em>8x16</em>. Verás que en este momento la consola presenta los tipos <em>VGA</em>.</p>
+<ol class="arabic simple" start="12">
+<li><p>A continuación vamos a instalar el sistema básico. Si quieres instalar un sistema de escritorio lo más práctico es utilizar <em>tasksel</em>. Si estás instlando un sistema mínimo, sin entorno gráfico, en una <em>Raspberry Pi Zero</em>, por ejemplo, salta al punto 13.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>tasksel
+</pre></div>
+</div>
+<p>Y seleccionamos mediante la <em>barra de espacio</em> <em>Debian desktop environment</em> y el escritorio que más te guste, teniendo en cuenta que el escritorio que elijas puede consumir muchos recursos. Yo elijo <em>LXQT</em> porque es el <em>original</em> del que utiliza <em>Raspberry Pi OS</em> y sobre todo porque consume muy pocos recursos. Este paso dura bastante tiempo y es posible que la pantalla se desconfigure. No te preocupes y deja que siga hasta que termine.</p>
+<ol class="arabic simple" start="13">
+<li><p>Cambiamos la hora a nuestra hora local. Para ello tecleamos <em>timedatectl list-timezones</em> y buscamos cual es nuestra zona. En mi caso <em>Europa/Madrid</em> y hacemos</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Europe/Madrid
+<span class="linenos">2</span>$<span class="w"> </span>date
+</pre></div>
+</div>
+<p>Y verás que la hora ya está actualizada a tu zona.</p>
+<ol class="arabic simple" start="14">
+<li><p>Ya solo queda reiniciar el sistema para tener un Sistema Operativo instalado en nuestra <em>RPi</em>.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</pre></div>
+</div>
+<ol class="arabic simple" start="15">
+<li><p>Entramos en nuestro nuevo sistema con nuestro usuario y contraseña. Normalmente tardará unos minutos, mientras se configura, hasta que se vea el <em>prompt</em>, por último, abrimos un terminal, si estamos en un entorno gráfico, y actualizamos y limpiamos nuestro sistema.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>full-upgrade<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove
+</pre></div>
+</div>
+<p>Ahora ya solo queda configurar el Sistema como más te guste y con las aplicaciones que necesites.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="index.html" class="btn btn-neutral float-left" title="Instalación de DEBIAN nativo en una Raspberry Pi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Angel de la Iglesia.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
