@@ -29,7 +29,7 @@ Este documento está bajo  `Licencia Creative Commons Atribución-CompartirIgual
 
 ..  _`Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional`: https://creativecommons.org/licenses/by-sa/4.0/
 
-La última versión de este documento está en https://github.com/aig-microC/Debian-en-RaspberryPi.
+La última versión de este documento está en https://github.com/aig-microC/Debian_en_Rpi.
 
 .. raw:: latex
 
