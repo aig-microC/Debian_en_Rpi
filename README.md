@@ -12,7 +12,7 @@ _sudo apt install git_
 
 y para clonar el reprositorio
 
-_git clone https://github.com/aig-microC/Debian-en-RaspberryPi_
+_git clone https://github.com/aig-microC/Debian_en_Rpi_
 
 
 Para compilar y generar la documentacióni, en el subdirectorio donde ves losficheros  _Makefile_ y _README.md_ hay que teclear:
