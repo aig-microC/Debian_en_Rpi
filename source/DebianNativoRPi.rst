@@ -1,9 +1,14 @@
+
 Procedimiento para instalar *Debian* "nativo" en una *Raspberry Pi*
-===================================================================
+-------------------------------------------------------------------
 
-Lo primero que hay que hacer es descargar la imagen básica desde el enlace https://raspi.debian.net/. Hay dos posibilidades: descargar la imagen creada diariamente (https://raspi.debian.net/daily-images/) o de la versión probadas(https://raspi.debian.net/tested-images/). Yo suelo utilizar las imágenes creadas diariamente y si encuentro problemas en la instalación me descargo la imagen testeada.
+Lo primero que hay que hacer es descargar la imagen básica desde el enlace https://raspi.debian.net/. Hay dos posibilidades: descargar la imagen creada diariamente (https://raspi.debian.net/daily-images/) o de la versión probada (https://raspi.debian.net/tested-images/). Yo suelo utilizar las imágenes creadas diariamente y si encuentro problemas en la instalación me descargo la imagen testeada.
 
-Una vez descargada hay que escribirla en una tarjeta *microSD*. Para ello utilizaremos, si tenemos instalado el *Raspberry Pi OS* en una *RPi 4 o 400* el programa rpi-imager_ que que está disponible en este sistema operativo o si estamos en un sistema *Debian* se puede compilar e instalar siguiendo las instrucciones que se pueden ver en https://github.com/raspberrypi/rpi-imager.
+.. note::
+
+    Aunque la página dice que las imágenes son creadas diariamente si observas la fecha de los ficheros verás que (posiblemente) no son muy recientes. No te preocupes cuando actualices tu sistema se configurará con los últimos paquetes de la distribución.
+
+Una vez descargada hay que escribirla en una tarjeta *microSD*. Para ello utilizaremos, si tenemos instalado el *Raspberry Pi OS* en una *RPi 4 o 400* el programa rpi-imager_ que que está disponible en este sistema operativo o si estamos en un sistema *Debian* se puede compilar e instalar siguiendo las instrucciones que se pueden ver en https://github.com/raspberrypi/rpi-imager. También es posible bajar una *AppImage* de https://github.com/raspberrypi/rpi-imager/releases. Una vez descargada la tienes que hacer ejecutable con ``chmod +x  Raspberry_Pi_Imager-x.y.z-x86_64.AppImage`` y luego ejecutarla con ``./Raspberry_Pi_Imager-x.y.z-x86_64.AppImage``.
 
 .. figure:: imágenes/rpi-imager.png
    :scale: 80 %
@@ -13,7 +18,7 @@ Una vez descargada hay que escribirla en una tarjeta *microSD*. Para ello utiliz
    
 .. _rpi-imager: https://www.raspberrypi.com/software/
    
-Seleccionamos *CHOSE OS* y vamos al final para seleccionar "**Use custom**, *Select a custom .img from your computer*" y buscamos la imagen que acabamos de descargar. A continuación seleccionamos "*CHOSE STORAGE*" y seleccionamos la memoria *microSD*. Y por último pulsamos "*WRITE*" para escribir la imagen en la tarjeta y terminar.
+Seleccionamos *ELEGIR SO* (*CHOSE OS*) y vamos al final para seleccionar "**Usar personalizado**, *Seleccione un .img personalizado de su ordenador*" ("**Use custom**, *Select a custom .img from your computer*") y buscamos la imagen que acabamos de descargar. A continuación seleccionamos "*ELEGIR ALMACENAMIENTO*" ("*CHOSE STORAGE*") y seleccionamos la memoria *microSD*. Y por último pulsamos "*SIGUIENTE*" y en la siguiente ventana para personalizar los ajustes del *SO* pulsamos **NO**. A continuación aparece una ventana de advertencia de borrado del "**MASS STORAGE DEVICE**" y si seleccionas **SI** borrará toda la memoria que hayas seleccionado (tienes que prestar mucha atención para no equivocarte) e instalará el *Sistema Operativo*.
 
 También lo podemos hacer utilizando la línea de comandos, con el procedimiento que se describe en https://raspi.debian.net/how-to-image/ y que básicamente consiste en, situándonos en el subdirectorio donde hayamos descargado la imagen, teclear:
 
@@ -88,7 +93,7 @@ Si tu tarjeta tiene conector RJ45 para conectar una línea ethernet puedes conec
 
 La tarjeta que acabamos de crear tiene dos particiones: *RASPIFIRM* donde están todos los ficheros para el arranque del Sistema Operativo y *RASPIROOT* que contiene la estructura de ficheros de nuestro Sistema *Debian*.
 
-Para tener conexión a *Internet* debemos editar el fichero */etc/network/interfaces.d/wlan0* que está en la partición *RASPIROOT* de la tarjeta que acabamos de crear. Este fichero está en la partición *EXT3* de la *microSD* y seguramente no te dejará editarla con tu usuario normal. Para poder editarlo deberás hacerlo como usuario *root* o mejor mediante sudo:
+Para tener conexión a *Internet* debemos editar el fichero */etc/network/interfaces.d/wlan0* que está en la partición *RASPIROOT* de la tarjeta que acabamos de crear. Este fichero está en la partición *EXT4* de la *microSD* y seguramente no te dejará editarla con tu usuario normal. Para poder editarlo deberás hacerlo como usuario *root* o mejor mediante sudo:
 
 .. code-block:: bash
    
@@ -117,9 +122,9 @@ En las líneas 7 y 8 deberás escribir los datos de tu red.
 Conexión a la tarjeta *Raspberry Pi* sin monitor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si no dispones de monitor para conectar a tu tarjeta *Raspberry Pi* puedes conectarte desde tu ordenador (el que has utilizado para grabar la imagen) mediante *ssh*. 
+Si no dispones de monitor para conectar a tu tarjeta *Raspberry Pi* puedes conectarte desde tu ordenador anfitrión (el que has utilizado para grabar la imagen) mediante *ssh*. 
 
-Para ello debes modificar, antes del primer arramque de la *RPi* el fichero */media/usuario/RASPYFIRM/sysconf.txt* que está en la partición *RASPIFIRM* que está formateada com *msdos* y la podrás editar sin utilizar *sudo* con el caso del fichero *wlan0*. 
+Para ello debes modificar, antes del primer arranque de la *RPi* el fichero */media/usuario/RASPYFIRM/sysconf.txt* que está en la partición *RASPIFIRM* que está formateada com *msdos* y la podrás editar sin utilizar *sudo* como en el caso del fichero *wlan0*. 
 
 Previamente has de generar la clave de autorización para poder acceder mediante *ssh*. Para ello hay que generar unos ficheros (*id_rsaP* y *id_rsa.pub*) que se crean en tu subdirectorio raiz bajo */home/usuario/.ssh* mediante el comando:
 
@@ -130,7 +135,7 @@ Previamente has de generar la clave de autorización para poder acceder mediante
 
 Cuando lo ejecutes te pedirá una *passphrase* que es una contraseña (nos recomienda que sea una frase larga) que deberás recordar para poder utilizar el *ssh*. Si lo dejas en blanco no te pédirá esta contraseña pero el sistema estará más desprotegido.
 
-Una vez ejecutado este comando debemos copiar el contenido del fichero *id_rsa.pub*,en el fichero */media/usuario/RASPYFIRM/sysconf.txt* descomentando la línea 27 "*root_autorized_key=*" y pegando el contenido a partir del signo *=* y sin dejar ningún espacio en blanco entre el *=* y lo pegado. El resultado deberá quedar de forma similara a:
+Una vez ejecutado este comando debemos copiar el contenido del fichero *id_rsa.pub*,en el fichero */media/usuario/RASPYFIRM/sysconf.txt* descomentando la línea 28 "*root_autorized_key=*" y pegando el contenido a partir del signo *=* y sin dejar ningún espacio en blanco entre el *=* y lo pegado. El resultado deberá quedar de forma similara a:
 
 .. code-block:: bash
    :linenos:
@@ -165,7 +170,7 @@ Para poder conectarnos con la tarjeta *Raspberry Pi* utilizamos el comando *host
    192.168.1.105
    $ nmap -sP 192.168.1.1-255
    Starting Nmap 7.93 ( https://nmap.org ) at 2023-09-13 17:17 CEST
-   Nmap scan report for mi_rouiter (192.168.1.1)
+   Nmap scan report for mi_router (192.168.1.1)
    Host is up (0.0014s latency).
    Nmap scan report for rpi1-20230908.home (192.168.1.106)
    Host is up (0.048s latency).
@@ -241,9 +246,12 @@ Una vez grabado el *SO* en la *microSD* la insertamos en nuestra *RPi* y esperam
    # apt upgrade 
 
 .. Note::
-   La primera vez que tecleas *apt update* el reloj del sistema no está sincronizado y produce un error de repositorio antiguo. La segunda vez es posible que ya se haya sincronizado y ya lo acepte sin error. Puedes hacer *ping google.es* y ver si tienes o no respuesta.
+   La primera vez que tecleas *apt update* el reloj del sistema puede que no esté sincronizado y puede producir un error de repositorio antiguo. La segunda vez que repitas el comando es posible que ya se haya sincronizado y ya lo acepte sin error. Puedes hacer *ping google.es* y ver si tienes o no conexión de internet.
+   
+.. warning::
+    Si cuando haces ``apt upgrade`` aparecen muchos paquetes bloqueados o retenidos dile ``n`` cuando te pregunta si deseas proceder con la actualización y cambia el comando anterior ``apt upgrade`` por ``apt full-upgrade``.
       
-Si al hacer la actualización (*apt upgrade*) hace preguntas contesta la respuesta por defecto (*Intro*).
+Si al hacer la actualización (*apt upgrade* o *apt full-upgrade*) hace preguntas contesta la respuesta por defecto (*Intro*).
 
 2. Añadir una *password* para el usuario *root*.
 
@@ -278,7 +286,10 @@ Si al hacer la actualización (*apt upgrade*) hace preguntas contesta la respues
    
    # usermod -aG sudo usuario
    
-Aquí tenemos un problema. Todavía no tenemos instalado el teclado y las *Locales* en español, por lo que el guión "-" no está en la tecla de nuestro teclado. Podemos ver en https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado que el guión en el teclado de Estados Unidos está en la tercera tecla, por la derecha, de la fila de números y símbolos del teclado y que en el teclado español se corresponde con la tecla "\'" (comilla simple) la que tiene el "?" cuando pulsamos la tecla *Shift* o *Mayúsculas*.
+Aquí tenemos un problema. Todavía no tenemos instalado el teclado y las *Locales* en español, por lo que el guión "-" no está en la tecla de nuestro teclado. Podemos ver en https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado que el guión en el teclado del Reino Unido o de Estados Unidos está en la tercera tecla, por la derecha, de la fila de números y símbolos del teclado y que en el teclado español se corresponde con la tecla "\'" (comilla simple) la que tiene el "?" cuando pulsamos la tecla *Shift* o *Mayúsculas*.
+
+.. Note:: 
+   Si estás usando ``ssh`` no tendrás este problema ya que el programa de *consola* de tu ordenador anfitrión ya estará configurado para el idioma español.
 
 6. Ahora podemos reiniciar el sistema y entrar como usuario *root* o *usuario* con su contraseña correspondiente.
 
@@ -359,7 +370,7 @@ Seleccionar *UTF-8* y luego *#Latino1 y Latino5 - Europa Occidental y lenguas tu
    
 Y seleccionamos mediante la *barra de espacio* *Debian desktop environment* y el escritorio que más te guste, teniendo en cuenta que el escritorio que elijas puede consumir muchos recursos. Yo elijo *LXQT* porque es el *original* del que utiliza *Raspberry Pi OS* y sobre todo porque consume muy pocos recursos. Este paso dura bastante tiempo y es posible que la pantalla se desconfigure. No te preocupes y deja que siga hasta que termine.
 
-13. Cambiamos la hora a nuestra hora local. Para ello tecleamos *timedatectl list-timezones* y buscamos cual es nuestra zona. En mi caso *Europa/Madrid* y hacemos
+13. Cambiamos la hora a nuestra hora local. Para ello tecleamos ``timedatectl list-timezones`` y buscamos cual es nuestra zona. En mi caso *Europa/Madrid* y hacemos
 
 .. code-block:: bash
    :linenos:
@@ -385,4 +396,77 @@ Y verás que la hora ya está actualizada a tu zona.
 
 Ahora ya solo queda configurar el Sistema como más te guste y con las aplicaciones que necesites.
 
+Creación de un fichero *SWAP*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yo no utilizo la memoria *SWAP* para `suspender <https://wiki.debian.org/Suspend>`_ la tarjeta procesadora, la uso para ayudar a la memoria *ram* a aumentar su tamaño para los programas que necesitan más memoria. Este apartado está basado en esta `página de debian`_.
+
+.. _`página de debian`: https://wiki.debian.org/Swap
+
+La tarjeta que hemos configurado no tiene partición *SWAP*. Podemos crear una partición *SWAP* en nuestra tarjeta de memoria poniendo la tarjeta *SD* en el lector de tarjetas de nuestro ordenador anfitrión para redimensionar (disminuir) la partición actual y crear una nueva partición en el espacio libre creado, por ejemplo con el programa *Discos* (*gnome-disk-utility*) pero aquí te voy a enseñar a como crear un fichero *SWAP* sin necesidad de crear una partición. El procedimiento es el siguiente:
+
+Hay que disponer de la utilidad ``fallocate`` que está en el paquete `util-linux <https://packages.debian.org/search?keywords=util-linux>`_. Si no lo tienes instalado lo puedes instalar con ``sudo apt install util-linux``.
+
+0) verifica que no tienes *SWAP*.
+
+    .. code:: bash
+       
+       sudo swapon --show
+
+   Si has seguido el procedimiento esto no debería mostrarte *nada*. 
+       
+1) Creamos un fichero que hará las funciones de memoria *SWAP*
+ 
+    .. code:: bash
+       
+       sudo fallocate -l 1G /fichero_swap       
+       
+    El tamaño que pongo en este ejemplo es de ``1G`` porque lo voy a implementar en una *Raspbery Pi Zero* que tiene 512k de memoria *ram*, cuando lo hago para una *4* o *400* un valor recomendable puede ser  ``4G`` (depende de si necesitas más o menos memoria *RAM*). El nombre del fichero *fichero_swap* es arbitrario, tú puedes elegir otro nombre para el fichero.
+    
+    .. note::
+    
+        Puedes ver la memoria usada (*RAM* y *SWAP* que aparece como *Inter:*) mediante el comando ``free -h``. Si ves que con tu uso la memoria *SWAP* está siempre sobrada puedes disminuir el fichero, por el contrario si usas programas que consumen mucha memoria y frecuentemente la memoria *SWAP* está próxima a completarse deberás aumentar el tamaño. 
+     
+    
+2) Garantizar que el archivo no sea legible para todo el mundo, por razones de seguridad.
+
+.. code:: bash
+       
+     sudo chmod 600 /fichero_swap
+     
+3) Hacer que el *fichero_swap* pueda ser utilizado como *SWAP*
+
+.. code:: bash
+       
+     sudo mkswap /fichero_swap
+       
+4) Activar el fichero de intercambio
+
+.. code:: bash
+       
+     sudo swapon /fichero_swap
+     
+Y habrá  que confirmar que se ha creado la nueva memoria de intercambio con ``sudo swapon --show``, que en este caso sí deberá producir salida:
+
+.. code:: bash
+   
+   sudo swapon --show
+
+    NAME          TYPE  SIZE USED PRIO
+    /fichero_swap file 1024M   0B   -2
+
+5) Y para finalizar hay que añadir en ``/etc/fstab`` la entrada para que la memoria *SWAP* se active al arrancar el sistema. Para ello hay que editar el fichero
+
+.. code:: bash
+   
+   sudo vi /etc/fstab
+   
+Y añadir al final del mismo las líneas:
+
+.. code:: bash
+   
+   # Fichero Swap creado en |Fecha|
+   /fichero_swap none swap sw 0 0   
+
+Guarda el fichero y ya podrás disponer de la memoría *SWAP* cuando vuelvas a arrancar la tarjeta. 
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instalación de DEBIAN nativo en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - 2.0</title>
+  <title>Instalación de DEBIAN nativo en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - </title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
@@ -69,7 +69,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="instalacion-de-debian-nativo-en-una-raspberry-pi">
+  <div class="admonition-ediciones-del-documento admonition">
+<p class="admonition-title">Ediciones del documento</p>
+<p>20250425</p>
+<p>20220430</p>
+<p>20210910 (interna)</p>
+</div>
+<section id="instalacion-de-debian-nativo-en-una-raspberry-pi">
 <h1>Instalación de <em>DEBIAN</em> nativo en una <em>Raspberry Pi</em><a class="headerlink" href="#instalacion-de-debian-nativo-en-una-raspberry-pi" title="Enlace permanente a este encabezado"></a></h1>
 <section id="introduccion">
 <h2>Introducción<a class="headerlink" href="#introduccion" title="Enlace permanente a este encabezado"></a></h2>
@@ -77,10 +83,10 @@
 <p>A continuación te muestro el procedimiento para realizar una instalación de <em>Debian</em> en una tarjeta <em>microSD</em> ya sea para la versión <em>estable</em> o la <em>testing</em>.</p>
 <p>Básicamente, la selección de la imagen de partida (ver <a class="reference external" href="https://wiki.debian.org/RaspberryPi">https://wiki.debian.org/RaspberryPi</a> y la respuesta 6 de <a class="reference external" href="https://raspi.debian.net/faq/">https://raspi.debian.net/faq/</a>) depende de la <em>familia</em> a la que pertenece la tarjeta de la <em>Raspberry Pi</em>.</p>
 <ul class="simple">
-<li><p>Las <em>Raspberry Pi Zero</em>, <em>Raspberry Pi Zero W</em> o <em>Raspberry Pi Zero WH</em> utilizan un chip que se corresponde con una arquitectura de 32 bits de tipo <em>armel</em> lo que supone que no dispone de una unidad de coma (punto en inglés) flotante (<em>FPU</em> <em>Floating Point Unit</em>) para las operaciones de cálculo. Los cálculos los hace mediante software y por lo tanto es más lento que si dispusiera de una <em>FPU</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 0/1</strong>. No consideraré la <em>Raspberry Pi Zero</em> porque no tiene conectividad con la que acceder a <em>Internet</em> mientras que las que si la tienen, <em>W</em> y <em>WH</em>, solo se diferencian en si tiene (<em>WH</em>) o no (<em>W</em>) la tira de de pines para conexiones (<em>GPIO</em>) soldada. A esta familia pertenecen también las <em>Raspberry Pi A, B, A+, B+ y las mencionadas Zero, Zero W</em>)</p></li>
-<li><p>La <em>Raspberry Pi 2</em> tiene arquitectura <em>amrhf</em> de 32 bits con 1 GB de memoria <em>RAM</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 2</strong></p></li>
-<li><p>La <em>Raspberry Pi Zero 2W</em> es de 64 bits con <em>FPU</em>. Su arquitectura es <em>armhf</em>. Tiene, como la <em>Zero W</em> 512 MB de memoria <em>RAM</em> por lo que si instalas un escritorio (sí, se puede instalar un escritorio y tener un entorno gráfico) no será muy rápido (pero un poco más rápida que si lo pruebas en una <em>Zero W</em>). En la notación que utiliza <em>Debian</em> es de la <strong>familia 3</strong>. A esta familia pertenecen también las <em>Raspberry Pi 3, 3A+, 3B+ y la mencionada Zero 2 W</em>).</p></li>
-<li><p>Las <em>Raspberry Pi 4</em> y <em>Raspberry Pi 400</em> son las versiones más potentes, con arquitectura <em>arm64</em> de 64 bits y 4 GB de memoria. La <em>Raspberry Pi 4</em> dispone de una versión con 8 GB de memoria <em>RAM</em>. En la notación que utiliza <em>Debian</em> es de la <strong>familia 4</strong>.</p></li>
+<li><p>Las <em>Raspberry Pi Zero</em>, <em>Raspberry Pi Zero W</em> o <em>Raspberry Pi Zero WH</em> utilizan un chip que se corresponde con una arquitectura de 32 bits de tipo <em>armel</em> lo que supone que no dispone de una unidad de coma (punto en inglés) flotante (<em>FPU</em> <em>Floating Point Unit</em>) para las operaciones de cálculo. Los cálculos los hace mediante software y por lo tanto es más lento que si dispusiera de una <em>FPU</em>. En la notación que utiliza la wiki de <em>Debian</em> es de la <strong>familia 0/1</strong>. No consideraré la <em>Raspberry Pi Zero</em> porque no tiene conectividad con la que acceder a <em>Internet</em> mientras que las que sí la tienen, <em>W</em> y <em>WH</em>, solo se diferencian en si tiene (<em>WH</em>) o no (<em>W</em>) la tira de de pines para conexiones (<em>GPIO</em>) soldada. A esta familia pertenecen también las <em>Raspberry Pi A, B, A+, B+ y las mencionadas Zero, Zero W</em>)</p></li>
+<li><p>La <em>Raspberry Pi 2</em> tiene arquitectura <em>amrhf</em> de 32 bits con 1 GB de memoria <em>RAM</em>. En la notación que utiliza la wiki de <em>Debian</em> es de la <strong>familia 2</strong></p></li>
+<li><p>La <em>Raspberry Pi Zero 2W</em> es de 64 bits con <em>FPU</em>. Su arquitectura es <em>armhf</em>. Tiene, como la <em>Zero W</em> 512 MB de memoria <em>RAM</em> por lo que si instalas un escritorio (sí, se puede instalar un escritorio y tener un entorno gráfico) no será muy rápido (pero un poco más rápida que si lo pruebas en una <em>Zero W</em>). En la notación que utiliza la wiki de <em>Debian</em> es de la <strong>familia 3</strong>. A esta familia pertenecen también las <em>Raspberry Pi 3, 3A+, 3B+ y la mencionada Zero 2 W</em>).</p></li>
+<li><p>Las <em>Raspberry Pi 4</em> y <em>Raspberry Pi 400</em> son las versiones más potentes, con arquitectura <em>arm64</em> de 64 bits y 4 GB de memoria. La <em>Raspberry Pi 4</em> dispone de una versión con 8 GB de memoria <em>RAM</em>. En la notación que utiliza la wiki de <em>Debian</em> es de la <strong>familia 4</strong>.</p></li>
 </ul>
 <p>Este documento está bajo  <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>. Todas las marcas comerciales referidas en este documento pertenecen a sus legítimos propietarios.</p>
 <figure class="align-center">
@@ -94,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#conexion-a-internet">Conexión a Internet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#conexion-a-la-tarjeta-raspberry-pi-sin-monitor">Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#configuracion-del-sistema-operativo">Configuración del sistema operativo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DebianNativoRPi.html#creacion-de-un-fichero-swap">Creación de un fichero <em>SWAP</em></a></li>
 </ul>
 </li>
 </ul>

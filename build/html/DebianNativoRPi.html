@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Procedimiento para instalar Debian «nativo» en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - 2.0</title>
+  <title>Procedimiento para instalar Debian «nativo» en una Raspberry Pi &mdash; documentación de Debian nativo en una RPi - </title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
@@ -46,6 +46,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#conexion-a-internet">Conexión a Internet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conexion-a-la-tarjeta-raspberry-pi-sin-monitor">Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-sistema-operativo">Configuración del sistema operativo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creacion-de-un-fichero-swap">Creación de un fichero <em>SWAP</em></a></li>
 </ul>
 </li>
 </ul>
@@ -76,15 +77,19 @@
              
   <section id="procedimiento-para-instalar-debian-nativo-en-una-raspberry-pi">
 <h1>Procedimiento para instalar <em>Debian</em> «nativo» en una <em>Raspberry Pi</em><a class="headerlink" href="#procedimiento-para-instalar-debian-nativo-en-una-raspberry-pi" title="Enlace permanente a este encabezado"></a></h1>
-<p>Lo primero que hay que hacer es descargar la imagen básica desde el enlace <a class="reference external" href="https://raspi.debian.net/">https://raspi.debian.net/</a>. Hay dos posibilidades: descargar la imagen creada diariamente (<a class="reference external" href="https://raspi.debian.net/daily-images/">https://raspi.debian.net/daily-images/</a>) o de la versión probadas(<a class="reference external" href="https://raspi.debian.net/tested-images/">https://raspi.debian.net/tested-images/</a>). Yo suelo utilizar las imágenes creadas diariamente y si encuentro problemas en la instalación me descargo la imagen testeada.</p>
-<p>Una vez descargada hay que escribirla en una tarjeta <em>microSD</em>. Para ello utilizaremos, si tenemos instalado el <em>Raspberry Pi OS</em> en una <em>RPi 4 o 400</em> el programa <a class="reference external" href="https://www.raspberrypi.com/software/">rpi-imager</a> que que está disponible en este sistema operativo o si estamos en un sistema <em>Debian</em> se puede compilar e instalar siguiendo las instrucciones que se pueden ver en <a class="reference external" href="https://github.com/raspberrypi/rpi-imager">https://github.com/raspberrypi/rpi-imager</a>.</p>
+<p>Lo primero que hay que hacer es descargar la imagen básica desde el enlace <a class="reference external" href="https://raspi.debian.net/">https://raspi.debian.net/</a>. Hay dos posibilidades: descargar la imagen creada diariamente (<a class="reference external" href="https://raspi.debian.net/daily-images/">https://raspi.debian.net/daily-images/</a>) o de la versión probada (<a class="reference external" href="https://raspi.debian.net/tested-images/">https://raspi.debian.net/tested-images/</a>). Yo suelo utilizar las imágenes creadas diariamente y si encuentro problemas en la instalación me descargo la imagen testeada.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Aunque la página dice que las imágenes son creadas diariamente si observas la fecha de los ficheros verás que (posiblemente) no son muy recientes. No te preocupes cuando actualices tu sistema se configurará con los últimos paquetes de la distribución.</p>
+</div>
+<p>Una vez descargada hay que escribirla en una tarjeta <em>microSD</em>. Para ello utilizaremos, si tenemos instalado el <em>Raspberry Pi OS</em> en una <em>RPi 4 o 400</em> el programa <a class="reference external" href="https://www.raspberrypi.com/software/">rpi-imager</a> que que está disponible en este sistema operativo o si estamos en un sistema <em>Debian</em> se puede compilar e instalar siguiendo las instrucciones que se pueden ver en <a class="reference external" href="https://github.com/raspberrypi/rpi-imager">https://github.com/raspberrypi/rpi-imager</a>. También es posible bajar una <em>AppImage</em> de <a class="reference external" href="https://github.com/raspberrypi/rpi-imager/releases">https://github.com/raspberrypi/rpi-imager/releases</a>. Una vez descargada la tienes que hacer ejecutable con <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span>&#160; <span class="pre">Raspberry_Pi_Imager-x.y.z-x86_64.AppImage</span></code> y luego ejecutarla con <code class="docutils literal notranslate"><span class="pre">./Raspberry_Pi_Imager-x.y.z-x86_64.AppImage</span></code>.</p>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="_images/rpi-imager.png"><img alt="_images/rpi-imager.png" src="_images/rpi-imager.png" style="width: 542.4px; height: 351.20000000000005px;" /></a>
+<a class="reference internal image-reference" href="_images/rpi-imager.png"><img alt="_images/rpi-imager.png" src="_images/rpi-imager.png" style="width: 542.4px; height: 388.0px;" /></a>
 <figcaption>
 <p><span class="caption-text">rpi-imager. Programa para copiar una imagen del SO</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
 </figcaption>
 </figure>
-<p>Seleccionamos <em>CHOSE OS</em> y vamos al final para seleccionar «<strong>Use custom</strong>, <em>Select a custom .img from your computer</em>» y buscamos la imagen que acabamos de descargar. A continuación seleccionamos «<em>CHOSE STORAGE</em>» y seleccionamos la memoria <em>microSD</em>. Y por último pulsamos «<em>WRITE</em>» para escribir la imagen en la tarjeta y terminar.</p>
+<p>Seleccionamos <em>ELEGIR SO</em> (<em>CHOSE OS</em>) y vamos al final para seleccionar «<strong>Usar personalizado</strong>, <em>Seleccione un .img personalizado de su ordenador</em>» (»<strong>Use custom</strong>, <em>Select a custom .img from your computer</em>») y buscamos la imagen que acabamos de descargar. A continuación seleccionamos «<em>ELEGIR ALMACENAMIENTO</em>» (»<em>CHOSE STORAGE</em>») y seleccionamos la memoria <em>microSD</em>. Y por último pulsamos «<em>SIGUIENTE</em>» y en la siguiente ventana para personalizar los ajustes del <em>SO</em> pulsamos <strong>NO</strong>. A continuación aparece una ventana de advertencia de borrado del «<strong>MASS STORAGE DEVICE</strong>» y si seleccionas <strong>SI</strong> borrará toda la memoria que hayas seleccionado (tienes que prestar mucha atención para no equivocarte) e instalará el <em>Sistema Operativo</em>.</p>
 <p>También lo podemos hacer utilizando la línea de comandos, con el procedimiento que se describe en <a class="reference external" href="https://raspi.debian.net/how-to-image/">https://raspi.debian.net/how-to-image/</a> y que básicamente consiste en, situándonos en el subdirectorio donde hayamos descargado la imagen, teclear:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>xzcat<span class="w"> </span>fichero_imagen_descargado.img.xz<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/<span class="o">{</span>indicador<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>tarjeta<span class="w"> </span>SD<span class="o">}</span><span class="w"> </span><span class="nv">bs</span><span class="o">=</span>64k<span class="w"> </span><span class="nv">oflag</span><span class="o">=</span>dsync<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 </pre></div>
@@ -148,7 +153,7 @@
 <h2>Conexión a Internet<a class="headerlink" href="#conexion-a-internet" title="Enlace permanente a este encabezado"></a></h2>
 <p>Si tu tarjeta tiene conector RJ45 para conectar una línea ethernet puedes conectarte al router con el cable. La conexión a internet será sencilla y no hay que hacer nada. Si no hay conector RJ45 o solo puedes conectar por <em>wifi</em> es necesario hacer dos cosas más en la <em>microSD</em> antes de ponerla en el zócalo de la tarjeta <em>Raspberry Pi</em>.</p>
 <p>La tarjeta que acabamos de crear tiene dos particiones: <em>RASPIFIRM</em> donde están todos los ficheros para el arranque del Sistema Operativo y <em>RASPIROOT</em> que contiene la estructura de ficheros de nuestro Sistema <em>Debian</em>.</p>
-<p>Para tener conexión a <em>Internet</em> debemos editar el fichero <em>/etc/network/interfaces.d/wlan0</em> que está en la partición <em>RASPIROOT</em> de la tarjeta que acabamos de crear. Este fichero está en la partición <em>EXT3</em> de la <em>microSD</em> y seguramente no te dejará editarla con tu usuario normal. Para poder editarlo deberás hacerlo como usuario <em>root</em> o mejor mediante sudo:</p>
+<p>Para tener conexión a <em>Internet</em> debemos editar el fichero <em>/etc/network/interfaces.d/wlan0</em> que está en la partición <em>RASPIROOT</em> de la tarjeta que acabamos de crear. Este fichero está en la partición <em>EXT4</em> de la <em>microSD</em> y seguramente no te dejará editarla con tu usuario normal. Para poder editarlo deberás hacerlo como usuario <em>root</em> o mejor mediante sudo:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>pluma<span class="w"> </span>/media/angel/RASPIROOT/etc/network/interfaces.d/wlan0
 </pre></div>
 </div>
@@ -169,14 +174,14 @@
 </section>
 <section id="conexion-a-la-tarjeta-raspberry-pi-sin-monitor">
 <h2>Conexión a la tarjeta <em>Raspberry Pi</em> sin monitor<a class="headerlink" href="#conexion-a-la-tarjeta-raspberry-pi-sin-monitor" title="Enlace permanente a este encabezado"></a></h2>
-<p>Si no dispones de monitor para conectar a tu tarjeta <em>Raspberry Pi</em> puedes conectarte desde tu ordenador (el que has utilizado para grabar la imagen) mediante <em>ssh</em>.</p>
-<p>Para ello debes modificar, antes del primer arramque de la <em>RPi</em> el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> que está en la partición <em>RASPIFIRM</em> que está formateada com <em>msdos</em> y la podrás editar sin utilizar <em>sudo</em> con el caso del fichero <em>wlan0</em>.</p>
+<p>Si no dispones de monitor para conectar a tu tarjeta <em>Raspberry Pi</em> puedes conectarte desde tu ordenador anfitrión (el que has utilizado para grabar la imagen) mediante <em>ssh</em>.</p>
+<p>Para ello debes modificar, antes del primer arranque de la <em>RPi</em> el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> que está en la partición <em>RASPIFIRM</em> que está formateada com <em>msdos</em> y la podrás editar sin utilizar <em>sudo</em> como en el caso del fichero <em>wlan0</em>.</p>
 <p>Previamente has de generar la clave de autorización para poder acceder mediante <em>ssh</em>. Para ello hay que generar unos ficheros (<em>id_rsaP</em> y <em>id_rsa.pub</em>) que se crean en tu subdirectorio raiz bajo <em>/home/usuario/.ssh</em> mediante el comando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa
 </pre></div>
 </div>
 <p>Cuando lo ejecutes te pedirá una <em>passphrase</em> que es una contraseña (nos recomienda que sea una frase larga) que deberás recordar para poder utilizar el <em>ssh</em>. Si lo dejas en blanco no te pédirá esta contraseña pero el sistema estará más desprotegido.</p>
-<p>Una vez ejecutado este comando debemos copiar el contenido del fichero <em>id_rsa.pub</em>,en el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> descomentando la línea 27 «<em>root_autorized_key=</em>» y pegando el contenido a partir del signo <em>=</em> y sin dejar ningún espacio en blanco entre el <em>=</em> y lo pegado. El resultado deberá quedar de forma similara a:</p>
+<p>Una vez ejecutado este comando debemos copiar el contenido del fichero <em>id_rsa.pub</em>,en el fichero <em>/media/usuario/RASPYFIRM/sysconf.txt</em> descomentando la línea 28 «<em>root_autorized_key=</em>» y pegando el contenido a partir del signo <em>=</em> y sin dejar ningún espacio en blanco entre el <em>=</em> y lo pegado. El resultado deberá quedar de forma similara a:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">23</span><span class="c1"># root_pw - Set a password for the root user (by default, it allows</span>
 <span class="linenos">24</span><span class="c1"># for a passwordless login)</span>
 <span class="linenos">25</span><span class="c1">#root_pw=FooBar</span>
@@ -198,7 +203,7 @@
 <span class="linenos"> 2</span><span class="m">192</span>.168.1.105
 <span class="linenos"> 3</span>$<span class="w"> </span>nmap<span class="w"> </span>-sP<span class="w"> </span><span class="m">192</span>.168.1.1-255
 <span class="linenos"> 4</span>Starting<span class="w"> </span>Nmap<span class="w"> </span><span class="m">7</span>.93<span class="w"> </span><span class="o">(</span><span class="w"> </span>https://nmap.org<span class="w"> </span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-09-13<span class="w"> </span><span class="m">17</span>:17<span class="w"> </span>CEST
-<span class="linenos"> 5</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>mi_rouiter<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.1<span class="o">)</span>
+<span class="linenos"> 5</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>mi_router<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.1<span class="o">)</span>
 <span class="linenos"> 6</span>Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0014s<span class="w"> </span>latency<span class="o">)</span>.
 <span class="linenos"> 7</span>Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span>rpi1-20230908.home<span class="w"> </span><span class="o">(</span><span class="m">192</span>.168.1.106<span class="o">)</span>
 <span class="linenos"> 8</span>Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.048s<span class="w"> </span>latency<span class="o">)</span>.
@@ -267,9 +272,13 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>La primera vez que tecleas <em>apt update</em> el reloj del sistema no está sincronizado y produce un error de repositorio antiguo. La segunda vez es posible que ya se haya sincronizado y ya lo acepte sin error. Puedes hacer <em>ping google.es</em> y ver si tienes o no respuesta.</p>
+<p>La primera vez que tecleas <em>apt update</em> el reloj del sistema puede que no esté sincronizado y puede producir un error de repositorio antiguo. La segunda vez que repitas el comando es posible que ya se haya sincronizado y ya lo acepte sin error. Puedes hacer <em>ping google.es</em> y ver si tienes o no conexión de internet.</p>
 </div>
-<p>Si al hacer la actualización (<em>apt upgrade</em>) hace preguntas contesta la respuesta por defecto (<em>Intro</em>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Si cuando haces <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">upgrade</span></code> aparecen muchos paquetes bloqueados o retenidos dile <code class="docutils literal notranslate"><span class="pre">n</span></code> cuando te pregunta si deseas proceder con la actualización y cambia el comando anterior <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">upgrade</span></code> por <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">full-upgrade</span></code>.</p>
+</div>
+<p>Si al hacer la actualización (<em>apt upgrade</em> o <em>apt full-upgrade</em>) hace preguntas contesta la respuesta por defecto (<em>Intro</em>).</p>
 <ol class="arabic simple" start="2">
 <li><p>Añadir una <em>password</em> para el usuario <em>root</em>.</p></li>
 </ol>
@@ -300,7 +309,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># usermod -aG sudo usuario</span>
 </pre></div>
 </div>
-<p>Aquí tenemos un problema. Todavía no tenemos instalado el teclado y las <em>Locales</em> en español, por lo que el guión «-» no está en la tecla de nuestro teclado. Podemos ver en <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado">https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado</a> que el guión en el teclado de Estados Unidos está en la tercera tecla, por la derecha, de la fila de números y símbolos del teclado y que en el teclado español se corresponde con la tecla «'» (comilla simple) la que tiene el «?» cuando pulsamos la tecla <em>Shift</em> o <em>Mayúsculas</em>.</p>
+<p>Aquí tenemos un problema. Todavía no tenemos instalado el teclado y las <em>Locales</em> en español, por lo que el guión «-» no está en la tecla de nuestro teclado. Podemos ver en <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado">https://es.wikipedia.org/wiki/Distribuci%C3%B3n_del_teclado</a> que el guión en el teclado del Reino Unido o de Estados Unidos está en la tercera tecla, por la derecha, de la fila de números y símbolos del teclado y que en el teclado español se corresponde con la tecla «'» (comilla simple) la que tiene el «?» cuando pulsamos la tecla <em>Shift</em> o <em>Mayúsculas</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si estás usando <code class="docutils literal notranslate"><span class="pre">ssh</span></code> no tendrás este problema ya que el programa de <em>consola</em> de tu ordenador anfitrión ya estará configurado para el idioma español.</p>
+</div>
 <ol class="arabic simple" start="6">
 <li><p>Ahora podemos reiniciar el sistema y entrar como usuario <em>root</em> o <em>usuario</em> con su contraseña correspondiente.</p></li>
 </ol>
@@ -368,7 +381,7 @@
 </div>
 <p>Y seleccionamos mediante la <em>barra de espacio</em> <em>Debian desktop environment</em> y el escritorio que más te guste, teniendo en cuenta que el escritorio que elijas puede consumir muchos recursos. Yo elijo <em>LXQT</em> porque es el <em>original</em> del que utiliza <em>Raspberry Pi OS</em> y sobre todo porque consume muy pocos recursos. Este paso dura bastante tiempo y es posible que la pantalla se desconfigure. No te preocupes y deja que siga hasta que termine.</p>
 <ol class="arabic simple" start="13">
-<li><p>Cambiamos la hora a nuestra hora local. Para ello tecleamos <em>timedatectl list-timezones</em> y buscamos cual es nuestra zona. En mi caso <em>Europa/Madrid</em> y hacemos</p></li>
+<li><p>Cambiamos la hora a nuestra hora local. Para ello tecleamos <code class="docutils literal notranslate"><span class="pre">timedatectl</span> <span class="pre">list-timezones</span></code> y buscamos cual es nuestra zona. En mi caso <em>Europa/Madrid</em> y hacemos</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>$<span class="w"> </span>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Europe/Madrid
 <span class="linenos">2</span>$<span class="w"> </span>date
@@ -388,6 +401,69 @@
 </pre></div>
 </div>
 <p>Ahora ya solo queda configurar el Sistema como más te guste y con las aplicaciones que necesites.</p>
+</section>
+<section id="creacion-de-un-fichero-swap">
+<h2>Creación de un fichero <em>SWAP</em><a class="headerlink" href="#creacion-de-un-fichero-swap" title="Enlace permanente a este encabezado"></a></h2>
+<p>Yo no utilizo la memoria <em>SWAP</em> para <a class="reference external" href="https://wiki.debian.org/Suspend">suspender</a> la tarjeta procesadora, la uso para ayudar a la memoria <em>ram</em> a aumentar su tamaño para los programas que necesitan más memoria. Este apartado está basado en esta <a class="reference external" href="https://wiki.debian.org/Swap">página de debian</a>.</p>
+<p>La tarjeta que hemos configurado no tiene partición <em>SWAP</em>. Podemos crear una partición <em>SWAP</em> en nuestra tarjeta de memoria poniendo la tarjeta <em>SD</em> en el lector de tarjetas de nuestro ordenador anfitrión para redimensionar (disminuir) la partición actual y crear una nueva partición en el espacio libre creado, por ejemplo con el programa <em>Discos</em> (<em>gnome-disk-utility</em>) pero aquí te voy a enseñar a como crear un fichero <em>SWAP</em> sin necesidad de crear una partición. El procedimiento es el siguiente:</p>
+<p>Hay que disponer de la utilidad <code class="docutils literal notranslate"><span class="pre">fallocate</span></code> que está en el paquete <a class="reference external" href="https://packages.debian.org/search?keywords=util-linux">util-linux</a>. Si no lo tienes instalado lo puedes instalar con <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">util-linux</span></code>.</p>
+<ol class="arabic" start="0">
+<li><p>verifica que no tienes <em>SWAP</em>.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>swapon<span class="w"> </span>--show
+</pre></div>
+</div>
+</div></blockquote>
+<p>Si has seguido el procedimiento esto no debería mostrarte <em>nada</em>.</p>
+</li>
+<li><p>Creamos un fichero que hará las funciones de memoria <em>SWAP</em></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>1G<span class="w"> </span>/fichero_swap
+</pre></div>
+</div>
+<p>El tamaño que pongo en este ejemplo es de <code class="docutils literal notranslate"><span class="pre">1G</span></code> porque lo voy a implementar en una <em>Raspbery Pi Zero</em> que tiene 512k de memoria <em>ram</em>, cuando lo hago para una <em>4</em> o <em>400</em> un valor recomendable puede ser  <code class="docutils literal notranslate"><span class="pre">4G</span></code> (depende de si necesitas más o menos memoria <em>RAM</em>). El nombre del fichero <em>fichero_swap</em> es arbitrario, tú puedes elegir otro nombre para el fichero.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Puedes ver la memoria usada (<em>RAM</em> y <em>SWAP</em> que aparece como <em>Inter:</em>) mediante el comando <code class="docutils literal notranslate"><span class="pre">free</span> <span class="pre">-h</span></code>. Si ves que con tu uso la memoria <em>SWAP</em> está siempre sobrada puedes disminuir el fichero, por el contrario si usas programas que consumen mucha memoria y frecuentemente la memoria <em>SWAP</em> está próxima a completarse deberás aumentar el tamaño.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Garantizar que el archivo no sea legible para todo el mundo, por razones de seguridad.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/fichero_swap
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Hacer que el <em>fichero_swap</em> pueda ser utilizado como <em>SWAP</em></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkswap<span class="w"> </span>/fichero_swap
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Activar el fichero de intercambio</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>swapon<span class="w"> </span>/fichero_swap
+</pre></div>
+</div>
+<p>Y habrá  que confirmar que se ha creado la nueva memoria de intercambio con <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">swapon</span> <span class="pre">--show</span></code>, que en este caso sí deberá producir salida:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>swapon<span class="w"> </span>--show
+
+<span class="w"> </span>NAME<span class="w">          </span>TYPE<span class="w">  </span>SIZE<span class="w"> </span>USED<span class="w"> </span>PRIO
+<span class="w"> </span>/fichero_swap<span class="w"> </span>file<span class="w"> </span>1024M<span class="w">   </span>0B<span class="w">   </span>-2
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Y para finalizar hay que añadir en <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> la entrada para que la memoria <em>SWAP</em> se active al arrancar el sistema. Para ello hay que editar el fichero</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/fstab
+</pre></div>
+</div>
+<p>Y añadir al final del mismo las líneas:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fichero Swap creado en |Fecha|</span>
+/fichero_swap<span class="w"> </span>none<span class="w"> </span>swap<span class="w"> </span>sw<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Guarda el fichero y ya podrás disponer de la memoría <em>SWAP</em> cuando vuelvas a arrancar la tarjeta.</p>
 </section>
 </section>
 

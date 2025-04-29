@@ -22,7 +22,7 @@ copyright = '2023, Angel de la Iglesia'
 author = 'Angel de la Iglesia'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0'
+#release = '2.0'
 
 
 # -- General configuration ---------------------------------------------------
