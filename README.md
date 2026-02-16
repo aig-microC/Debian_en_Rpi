@@ -1,7 +1,7 @@
 # Este repositorio está DESACTUALIZADO, aunque puede seguir siendo útil para arquitecturas de 32 bits.
 
-A fecha 20250216 los repositorios fuente para descargar las imágenes no se actualiza desde 2024-03-07 (https://raspi.debian.net/tested-images/).
-En https://raspi.debian.net/ se pueden descargar imágenes, incluso para la RPI 5, pero como en Debian solo paara arquitectura de 64 bits.
+A fecha 20250216 los repositorios fuente para descargar las imágenes no se actualizan desde 2024-03-07 (https://raspi.debian.net/tested-images/).
+En https://raspi.debian.net/ se pueden descargar imágenes, incluso para la RPI 5, pero como en Debian solo para arquitectura de 64 bits.
 
 # Instalar Debian nativo en Raspberry Pi
 
